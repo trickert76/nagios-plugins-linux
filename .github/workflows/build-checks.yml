@@ -57,8 +57,10 @@ jobs:
           make
           make check
           make distcheck
+          ls -al
+          echo "PACKAGE_NAME=nagios-plugins-linux-$(awk '/^ID=/' /etc/*-release | sed 's/ID=//')" >> $GITHUB_ENV
 
       - uses: actions/upload-artifact@v2
         with:
-          name: nagios-plugins-linux-${{ matrix.container }}
+          name: ${{ env.PACKAGE_NAME }}
           path: nagios-plugins-linux-*

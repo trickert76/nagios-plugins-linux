@@ -64,9 +64,9 @@ jobs:
         with:
           name: ${{ env.PACKAGE_NAME }}
           path: nagios-plugins-linux-*
-            - name: Upload the artifacts
-     
-     - uses: skx/github-action-publish-binaries@master
+
+      - name: Upload the artifacts
+        uses: skx/github-action-publish-binaries@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:

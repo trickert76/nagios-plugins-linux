@@ -57,3 +57,24 @@ jobs:
           make
           make check
           make distcheck
+
+
+      - id: create_packages
+        run: |
+          case "${{ matrix.container }}" in
+            alpine*)
+              make -C packages alpine-3.12
+            ;;
+            debian*)
+              make -C packages debian-buster
+            ;;
+            ubuntu*)
+              make -C packages debian-buster
+            ;;
+            centos*)
+              make -C packages centos-8
+            ;;
+            fedora*)
+              make -C packages fedora-33
+            ;;
+          esac

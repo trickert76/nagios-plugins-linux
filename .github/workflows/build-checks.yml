@@ -57,3 +57,8 @@ jobs:
           make
           make check
           make distcheck
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: nagios-plugins-linux-${{ matrix.container }}
+          path: nagios-plugins-linux-*

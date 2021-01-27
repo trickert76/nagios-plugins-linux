@@ -59,10 +59,16 @@ jobs:
           make distcheck
           mv nagios-plugins-linux-*.bz2 nagios-plugins-linux-v29-$(awk '/^ID=/' /etc/*-release | sed 's/ID=//' | sed 's/"//' ).tar.bz2
  
-      - name: Upload the artifacts
-        uses: skx/github-action-publish-binaries@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create a Release APK
+        uses: ncipollo/release-action@v1
         with:
-          releaseId: tag/v29
-          args: nagios-plugins-linux-*.bz2
+          artifacts: "nagios-plugins-linux-*.bz2"
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+#      - name: Upload the artifacts
+#        uses: skx/github-action-publish-binaries@master
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        with:
+#          releaseId: tag/v29
+#          args: nagios-plugins-linux-*.bz2

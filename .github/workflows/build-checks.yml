@@ -57,18 +57,12 @@ jobs:
           make
           make check
           make distcheck
-          echo "RELEASE_ID=v28" >> $GITHUB_ENV
-          echo "PACKAGE_NAME=nagios-plugins-linux-v28-$(awk '/^ID=/' /etc/*-release | sed 's/ID=//')" >> $GITHUB_ENV
-
-      - uses: actions/upload-artifact@v2
-        with:
-          name: ${{ env.PACKAGE_NAME }}
-          path: nagios-plugins-linux-*
-
+          mv nagios-plugins-linux-*.bz2 nagios-plugins-linux-v29-$(awk '/^ID=/' /etc/*-release | sed 's/ID=//' | sed 's/"//' ).tar.bz2
+ 
       - name: Upload the artifacts
         uses: skx/github-action-publish-binaries@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          releaseId: ${{ env.RELEASE_ID }}
-          args: nagios-plugins-linux-*
+          releaseId: tag/v29
+          args: nagios-plugins-linux-*.bz2

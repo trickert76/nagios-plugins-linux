@@ -64,6 +64,8 @@ jobs:
         with:
           artifacts: "nagios-plugins-linux-*.bz2"
           token: ${{ secrets.GITHUB_TOKEN }}
+          allowUpdates: true
+          tag: v29
 
 #      - name: Upload the artifacts
 #        uses: skx/github-action-publish-binaries@master

@@ -57,6 +57,7 @@ jobs:
           make
           make check
           make distcheck
+          ls -al
           mv nagios-plugins-linux-*.bz2 nagios-plugins-linux-v29-$(awk '/^ID=/' /etc/*-release | sed 's/ID=//' | sed 's/"//' ).tar.bz2
  
       - name: Create a Release APK

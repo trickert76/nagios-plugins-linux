@@ -57,7 +57,7 @@ jobs:
           make
           make check
           make distcheck
-          echo "RELEASE_ID='v28'" >> $GITHUB_ENV
+          echo "RELEASE_ID=v28" >> $GITHUB_ENV
           echo "PACKAGE_NAME=nagios-plugins-linux-v28-$(awk '/^ID=/' /etc/*-release | sed 's/ID=//')" >> $GITHUB_ENV
 
       - uses: actions/upload-artifact@v2

@@ -58,7 +58,6 @@ jobs:
           make check
           make distcheck
 
-
       - id: create_packages
         run: |
           case "${{ matrix.container }}" in
